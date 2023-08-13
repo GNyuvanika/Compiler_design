@@ -1,0 +1,23 @@
+%{
+#include <stdio.h>
+%}
+
+digit       [0-9]
+number      {digit}
+
+%%
+{number}    { printf("Constant: %s\n", yytext); }
+.;
+%%
+
+int main()
+{
+printf("Enter a string with constants=");
+yylex();
+return 0;
+}
+
+int yywrap()
+{
+return 1;
+}
