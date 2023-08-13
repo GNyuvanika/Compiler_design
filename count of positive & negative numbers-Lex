@@ -1,0 +1,26 @@
+%{
+#include<stdio.h>
+int positive=0,negative=0;
+%}
+
+digit     [0-9]
+number    {digit}
+
+%%
+{number}    { positive++; }
+.* { negative++; }
+%%
+
+int main()
+{
+printf("Enter the numbers=");
+yylex();
+printf("Positive numbers=%d\n",positive);
+printf("negative numbers=%d\n",negative);
+return 0;
+}
+
+int yywrap()
+{
+return 1;
+}
