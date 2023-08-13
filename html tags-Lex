@@ -1,0 +1,22 @@
+%{
+#include<stdio.h>
+int html=0;
+%}
+
+%%
+"<"[a-zA-Z]+">" { html++;printf("html tag is valid");}
+.*  {printf("Invalid html tag");}
+%%
+
+int main()
+{
+printf("Enter the input=");
+yylex();
+printf("No.of html tags=%d\n",html);
+return 0;
+}
+
+int yywrap()
+{
+return 1;
+}
