@@ -1,0 +1,23 @@
+%{
+#include<stdio.h>
+int c=0;
+%}
+
+%%
+"//"(.)*\n { c++; }
+"/*"(.)"*/"* { c++; }
+.;
+%%
+
+int main()
+{
+printf("Enter the code=");
+yylex();
+printf("No.of comments=%d\n",c);
+return 0;
+}
+
+int yywrap()
+{
+return 1;
+}
