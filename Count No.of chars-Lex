@@ -1,0 +1,25 @@
+%{
+#include<stdio.h>
+int lc=0,wc=0,sc=0,cc=0;
+%}
+
+%%
+[\n] {lc++;cc+=yyleng;}
+[ \t] {wc++;cc+=yyleng;}
+[^\t\n] {sc++;cc+=yyleng;}
+%%
+
+int main(int argc,char*argv[])
+{
+printf("Enter a string=");
+yylex();
+printf("No.of lines=%d\n",lc);
+printf("No.of spaces=%d\n",wc);
+printf("No.of letters=%d\n",sc);
+printf("No.of characters=%d\n",cc);
+}
+
+int yywrap()
+{
+return 1;
+}
