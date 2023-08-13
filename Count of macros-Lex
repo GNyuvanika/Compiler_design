@@ -1,0 +1,25 @@
+%{
+#include<stdio.h>
+int macro_count=0;
+int header_count=0;
+%}
+
+%%
+"#include" { header_count++;}
+"#define"  { macro_count++;}
+.;
+%%
+
+int main()
+{
+printf("Enter the files=");
+yylex();
+printf("No.of macros=%d\n",macro_count);
+printf("No.of header files=%d\n",header_count);
+return 0;
+}
+
+int yywrap()
+{
+return 1;
+}
