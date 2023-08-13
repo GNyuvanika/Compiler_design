@@ -1,0 +1,15 @@
+%{
+#include<stdio.h>
+%}
+
+%%
+int|if|else|for|while|do   {printf("Keywords=%s\n",yytext);}
+[a-zA-Z][a-zA-Z0-9]*        {printf("Identifiers=%s\n,yytext);}
+.;
+%%
+
+int main()
+{
+yylex();
+return 0;
+}
